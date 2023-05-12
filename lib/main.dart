@@ -12,50 +12,36 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: FittedBoxExample()),
+      home: Scaffold(body: FractionallySizedBoxq()),
     );
   }
 }
 
-//FittedBoxExample
-class FittedBoxExample extends StatelessWidget {
-  const FittedBoxExample({super.key});
+//FractionallySizedBox
+
+class FractionallySizedBoxq extends StatelessWidget {
+  const FractionallySizedBoxq({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: 100,
-          width: 100,
-          color: const Color.fromARGB(255, 129, 155, 177),
-          child: FittedBox(
-            // TRY THIS: Try changing the fit types to see how they change the way
-            // the placeholder fits into the container.
-            fit: BoxFit.fill,
-            child: Container(
-              color: const Color.fromARGB(255, 139, 133, 132),
-              child: const Text("heloo bibek"),
-            ),
-          ),
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.green,
+      child: FractionallySizedBox(
+        widthFactor: 0.9,
+        heightFactor: 0.8,
+        child: Container(
+          color: Colors.red,
+          child: const Text("helooo bibek"),
         ),
-        const Center(
-          child: SizedBox(
-            width: double.infinity,
-            child: FittedBox(
-                child: Text(
-                    "heloo bibek what are ysadasdassdsdasdsd das fsddsfdsfsdfdsf  sfddsf ou doing in home in the class")),
-          ),
-        ),
-        const Center(
-          child: SizedBox(
-            width: double.infinity,
-            child: FittedBox(
-                child:
-                    Text("heloo bibek what are  doing in home in the class")),
-          ),
-        )
-      ],
+      ),
     );
   }
 }
+
+
+//conslusions
+
+// it takes  Fractionally height and width of its parents
+// 1=100%
