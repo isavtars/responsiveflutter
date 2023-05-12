@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// //Creating a responsive Flutter app
-/// A widget that attempts to size the child to a specific aspect ratio.
+/// Builds a widget tree that can depend on the parent widget's orientation (distinct from the device orientation).
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,36 +12,28 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: FractionallySizedBoxq()),
+      home: Scaffold(body: OrientationBuildera()),
     );
   }
 }
 
-//FractionallySizedBox
+//OrientationBuilder
 
-class FractionallySizedBoxq extends StatelessWidget {
-  const FractionallySizedBoxq({super.key});
+class OrientationBuildera extends StatelessWidget {
+  const OrientationBuildera({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: 500,
-      color: Colors.green,
-      child: FractionallySizedBox(
-        widthFactor: 0.9,
-        heightFactor: 0.8,
-        child: Container(
-          color: Colors.red,
-          child: const Text("helooo bibek"),
-        ),
-      ),
-    );
+    return OrientationBuilder(builder: (context, orientation) {
+      if (orientation == Orientation.portrait) {
+        return const Text("Portated");
+      } else {
+        return const Text("LandScapes");
+      }
+    });
   }
 }
 
 
 //conslusions
-
-// it takes  Fractionally height and width of its parents
-// 1=100%
+// it have builder methods that take the actual  Orientation of the Screen 
