@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [LayoutBuilder].
 /// //Creating a responsive Flutter app
+/// A widget that attempts to size the child to a specific aspect ratio.
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,57 +12,50 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LayoutBuilderExample(),
+      home: Scaffold(body: FittedBoxExample()),
     );
   }
 }
 
-class LayoutBuilderExample extends StatelessWidget {
-  const LayoutBuilderExample({super.key});
+//FittedBoxExample
+class FittedBoxExample extends StatelessWidget {
+  const FittedBoxExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('LayoutBuilder Example')),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
-            return _buildWideContainers();
-          } else {
-            return _buildNormalContainer();
-          }
-        },
-      ),
-    );
-  }
-
-  Widget _buildNormalContainer() {
-    return Center(
-      child: Container(
-        height: 100.0,
-        width: 100.0,
-        color: const Color.fromARGB(255, 92, 244, 54),
-      ),
-    );
-  }
-
-  Widget _buildWideContainers() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            height: 100.0,
-            width: 100.0,
-            color: const Color.fromARGB(255, 14, 10, 226),
+    return Column(
+      children: [
+        Container(
+          height: 100,
+          width: 100,
+          color: const Color.fromARGB(255, 129, 155, 177),
+          child: FittedBox(
+            // TRY THIS: Try changing the fit types to see how they change the way
+            // the placeholder fits into the container.
+            fit: BoxFit.fill,
+            child: Container(
+              color: const Color.fromARGB(255, 139, 133, 132),
+              child: const Text("heloo bibek"),
+            ),
           ),
-          Container(
-            height: 100.0,
-            width: 100.0,
-            color: Colors.yellow,
+        ),
+        const Center(
+          child: SizedBox(
+            width: double.infinity,
+            child: FittedBox(
+                child: Text(
+                    "heloo bibek what are ysadasdassdsdasdsd das fsddsfdsfsdfdsf  sfddsf ou doing in home in the class")),
           ),
-        ],
-      ),
+        ),
+        const Center(
+          child: SizedBox(
+            width: double.infinity,
+            child: FittedBox(
+                child:
+                    Text("heloo bibek what are  doing in home in the class")),
+          ),
+        )
+      ],
     );
   }
 }
