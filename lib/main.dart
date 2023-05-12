@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// //Creating a responsive Flutter app
-/// Scales and positions its child within itself according to fit.
+/// A widget that attempts to size the child to a specific aspect ratio.
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,27 +12,35 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  FittedBoxExample(),
+      home: AspectRatioExample(),
     );
   }
 }
 
-/// FittedBoxExample
-
-class FittedBoxExample extends StatelessWidget {
-  const FittedBoxExample({super.key});
+///AspectRatio
+class AspectRatioExample extends StatelessWidget {
+  const AspectRatioExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      width: 300,
-      color: Colors.blue,
-      child: const FittedBox(
-        // TRY THIS: Try changing the fit types to see how they change the way
-        // the placeholder fits into the container.
-        fit: BoxFit.fill,
-        child: Placeholder(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('AspectRatio'),
+      ),
+      body: Column(
+        children: [
+          Container(
+            color: const Color.fromARGB(255, 106, 127, 145),
+            alignment: Alignment.center,
+            height: 300,
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Container(
+                color: Colors.green,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
