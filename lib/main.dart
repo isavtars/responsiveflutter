@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [LayoutBuilder].
 /// //Creating a responsive Flutter app
+/// A widget that attempts to size the child to a specific aspect ratio.
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,57 +12,36 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LayoutBuilderExample(),
+      home: Scaffold(body: FractionallySizedBoxq()),
     );
   }
 }
 
-class LayoutBuilderExample extends StatelessWidget {
-  const LayoutBuilderExample({super.key});
+//FractionallySizedBox
+
+class FractionallySizedBoxq extends StatelessWidget {
+  const FractionallySizedBoxq({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('LayoutBuilder Example')),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
-            return _buildWideContainers();
-          } else {
-            return _buildNormalContainer();
-          }
-        },
-      ),
-    );
-  }
-
-  Widget _buildNormalContainer() {
-    return Center(
-      child: Container(
-        height: 100.0,
-        width: 100.0,
-        color: const Color.fromARGB(255, 92, 244, 54),
-      ),
-    );
-  }
-
-  Widget _buildWideContainers() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            height: 100.0,
-            width: 100.0,
-            color: const Color.fromARGB(255, 14, 10, 226),
-          ),
-          Container(
-            height: 100.0,
-            width: 100.0,
-            color: Colors.yellow,
-          ),
-        ],
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.green,
+      child: FractionallySizedBox(
+        widthFactor: 0.9,
+        heightFactor: 0.8,
+        child: Container(
+          color: Colors.red,
+          child: const Text("helooo bibek"),
+        ),
       ),
     );
   }
 }
+
+
+//conslusions
+
+// it takes  Fractionally height and width of its parents
+// 1=100%
