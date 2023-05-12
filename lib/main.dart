@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-/// Flutter code sample for [LayoutBuilder].
 /// //Creating a responsive Flutter app
+/// A widget that attempts to size the child to a specific aspect ratio.
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,54 +12,33 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LayoutBuilderExample(),
+      home: AspectRatioExample(),
     );
   }
 }
 
-class LayoutBuilderExample extends StatelessWidget {
-  const LayoutBuilderExample({super.key});
+///AspectRatio
+class AspectRatioExample extends StatelessWidget {
+  const AspectRatioExample({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('LayoutBuilder Example')),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          if (constraints.maxWidth > 600) {
-            return _buildWideContainers();
-          } else {
-            return _buildNormalContainer();
-          }
-        },
+      appBar: AppBar(
+        title: const Text('AspectRatio'),
       ),
-    );
-  }
-
-  Widget _buildNormalContainer() {
-    return Center(
-      child: Container(
-        height: 100.0,
-        width: 100.0,
-        color: const Color.fromARGB(255, 92, 244, 54),
-      ),
-    );
-  }
-
-  Widget _buildWideContainers() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
+      body: Column(
+        children: [
           Container(
-            height: 100.0,
-            width: 100.0,
-            color: const Color.fromARGB(255, 14, 10, 226),
-          ),
-          Container(
-            height: 100.0,
-            width: 100.0,
-            color: Colors.yellow,
+            color: const Color.fromARGB(255, 106, 127, 145),
+            alignment: Alignment.center,
+            height: 300,
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Container(
+                color: Colors.green,
+              ),
+            ),
           ),
         ],
       ),
