@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// //Creating a responsive Flutter app
-/// A widget that attempts to size the child to a specific aspect ratio.
+/// Scales and positions its child within itself according to fit.
 
 void main() => runApp(const LayoutBuilderExampleApp());
 
@@ -12,49 +12,28 @@ class LayoutBuilderExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      home:  FittedBoxExample(),
     );
   }
 }
 
-///AspectRatio
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/// FittedBoxExample
+
+class FittedBoxExample extends StatelessWidget {
+  const FittedBoxExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var height, weight;
-    var size = MediaQuery.of(context).size;
-    height = size.height;
-    weight = size.width;
-
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("MediaQuerys"),
-        ),
-        body: Column(
-          children: [
-            Container(
-              height: height * 0.2,
-              width: weight,
-              color: Colors.red,
-            ),
-            Container(
-              height: height * 0.2,
-              width: weight,
-              color: const Color.fromARGB(255, 3, 247, 76),
-            ),
-            Container(
-              height: height * 0.2,
-              width: weight,
-              color: const Color.fromARGB(255, 245, 9, 138),
-            ),
-            Container(
-              height: height * 0.1,
-              width: weight,
-              color: const Color.fromARGB(255, 12, 185, 216),
-            )
-          ],
-        ));
+    return Container(
+      height: 400,
+      width: 300,
+      color: Colors.blue,
+      child: const FittedBox(
+        // TRY THIS: Try changing the fit types to see how they change the way
+        // the placeholder fits into the container.
+        fit: BoxFit.fill,
+        child: Placeholder(),
+      ),
+    );
   }
 }
